@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Mobile - Eid Offer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Poppins', system-ui, sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at 10% 30%, #1a4d3e, #0a2f23);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+        }
+
+        .ad-container {
+            max-width: 468px;
+            width: 100%;
+            margin-bottom: 16px;
+            text-align: center;
+            background: #fefcf0;
+            border-radius: 16px;
+            padding: 10px;
+            border: 2px solid #e4c580;
+        }
+
+        .offer-card {
+            max-width: 440px;
+            width: 100%;
+            background: #fefcf0;
+            border-radius: 40px 40px 40px 40px;
+            box-shadow: 0 30px 50px rgba(0, 20, 10, 0.7),
+                        0 0 0 3px #e4c580,
+                        inset 0 0 20px #fff3ce;
+            position: relative;
+        }
+
+        .eid-badge {
+            background: linear-gradient(165deg, #c9a34b, #996515);
+            color: #fff9e6;
+            text-align: center;
+            padding: 18px 12px;
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-shadow: 3px 3px 0 #6b4f1f, 0 0 10px #ffdb8e;
+            border-bottom: 4px solid #ffd98c;
+            border-top-left-radius: 40px;
+            border-top-right-radius: 40px;
+        }
+
+        .guest-chip {
+            background: #1c5f46;
+            color: #ffdea4;
+            padding: 12px 18px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 500;
+            border-bottom: 2px dashed #e4b95b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .guest-chip .sender-name {
+            background: #e6b422;
+            color: #1f4d32;
+            padding: 4px 18px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 20px;
+            border: 2px solid white;
+        }
+
+        .content {
+            padding: 24px 20px 28px;
+        }
+
+        .offer-title {
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        .offer-title .main-offer-badge {
+            background: #e63946;
+            color: white;
+            font-size: 34px;
+            font-weight: 900;
+            padding: 10px 25px;
+            border-radius: 80px;
+            display: inline-block;
+            box-shadow: 0 8px 0 #941f2c, 0 10px 20px rgba(0,0,0,0.2);
+            border: 2px solid #ffba7a;
+            text-shadow: 0 2px 0 #560000;
+            margin-bottom: 12px;
+        }
+
+        .offer-sub {
+            font-size: 22px;
+            font-weight: 700;
+            color: #a7572b;
+            background: #ffefc0;
+            padding: 6px 20px;
+            border-radius: 40px;
+            display: inline-block;
+            border: 1px solid #bc8f4b;
+        }
+
+        .price-glow {
+            background: #fce8b6;
+            border-radius: 80px;
+            padding: 16px 20px;
+            margin: 18px 0;
+            text-align: center;
+            border: 2px solid #b37b3a;
+            box-shadow: 0 8px 0 #7b5627, inset 0 -2px 5px #ffeecc;
+            font-size: 28px;
+            font-weight: bold;
+            color: #281e0e;
+        }
+
+        .price-glow strong {
+            font-size: 52px;
+            color: #b63131;
+            margin: 0 8px;
+            text-shadow: 0 3px 0 #510000;
+        }
+
+        .brand-pavilion {
+            background: #daf1e4;
+            border-radius: 36px;
+            padding: 20px 15px;
+            border: 1px solid #c6a15b;
+            box-shadow: inset 0 2px 8px #b6d5c2, 0 6px 0 #6c4f2b;
+            margin: 24px 0 18px;
+        }
+
+        .brand-pavilion p {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1b4d35;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .brand-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px 10px;
+        }
+
+        .brand-chip {
+            background: #1a4d3a;
+            color: #fff2be;
+            padding: 10px 22px;
+            border-radius: 60px;
+            font-size: 18px;
+            font-weight: 600;
+            border: 2px solid #f3c26b;
+            box-shadow: 0 4px 0 #0b2f1e;
+        }
+
+        .guarantee-tag {
+            margin-top: 18px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #ac412c;
+            background: #ffddb0;
+            padding: 8px 12px;
+            border-radius: 60px;
+            display: inline-block;
+            border: 1px solid #bf7629;
+        }
+
+        .hello-details {
+            background: #f5e6ca;
+            border-radius: 32px;
+            padding: 18px 18px;
+            border: 3px solid #b18036;
+            box-shadow: 0 7px 0 #6f4f24, inset 0 0 0 2px #fffae0;
+            margin: 18px 0 10px;
+        }
+
+        .detail-line {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 19px;
+            margin: 14px 4px;
+            font-weight: 600;
+            color: #1d422e;
+            background: rgba(255,255,230,0.6);
+            padding: 6px 12px;
+            border-radius: 50px;
+        }
+
+        .detail-line .big-emoji {
+            font-size: 32px;
+            min-width: 48px;
+            text-align: center;
+        }
+
+        .shop-name-highlight {
+            background: #aa3a3a;
+            color: white;
+            padding: 5px 20px;
+            border-radius: 40px;
+            font-size: 26px;
+            font-weight: 800;
+            display: inline-block;
+            border: 2px solid gold;
+            text-shadow: 0 2px 0 #4d0000;
+        }
+
+        .eid-greeting-box {
+            background: #cf9f4b;
+            color: #211500;
+            font-size: 32px;
+            font-weight: 900;
+            text-align: center;
+            padding: 14px;
+            border-radius: 60px;
+            margin: 20px 0 16px;
+            border: 3px solid #fff1b5;
+            box-shadow: inset 0 -5px 0 #896528;
+        }
+
+        .name-input-area {
+            background: #fcf3d7;
+            border-radius: 60px;
+            padding: 15px 18px;
+            margin: 15px 0 10px;
+            border: 2px solid #b68b40;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .name-input-area label {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2b593b;
+        }
+
+        .name-input-area input {
+            flex: 2;
+            min-width: 160px;
+            padding: 14px 18px;
+            border-radius: 60px;
+            border: 2px solid #997f3a;
+            font-size: 18px;
+            font-weight: 600;
+            background: white;
+            outline: none;
+            color: #1f3f2b;
+        }
+
+        .apply-name-btn {
+            background: #3e6b52;
+            color: white;
+            border: none;
+            padding: 14px 26px;
+            border-radius: 60px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 0 #1f402b;
+            border: 1px solid #efc777;
+        }
+
+        .apply-name-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 1px 0 #1f402b;
+        }
+
+        .action-row {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            flex: 1 1 180px;
+            padding: 18px 12px;
+            border: none;
+            border-radius: 50px;
+            font-size: 21px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            cursor: pointer;
+            border: 2px solid white;
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+            box-shadow: 0 8px 0 #128C7E;
+        }
+
+        .btn-whatsapp:active {
+            transform: translateY(6px);
+            box-shadow: 0 2px 0 #128C7E;
+        }
+
+        .btn-copy {
+            background: #2e6b4f;
+            color: white;
+            box-shadow: 0 8px 0 #1a4232;
+        }
+
+        .btn-copy:active {
+            transform: translateY(6px);
+            box-shadow: 0 2px 0 #1a4232;
+        }
+
+        .copy-feedback {
+            text-align: center;
+            min-height: 32px;
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 16px;
+            color: #6f5e3b;
+            margin-top: 15px;
+            border-top: 1px dashed #cbaa67;
+            padding-top: 15px;
+        }
+    </style>
+    <!-- एड स्क्रिप्ट - 1/2 (कॉन्फ़िगरेशन) -->
+    <script>
+      atOptions = {
+        'key' : '233719499f217c8b60addb520111d2f8',
+        'format' : 'iframe',
+        'height' : 60,
+        'width' : 468,
+        'params' : {}
+      };
+    </script>
+</head>
+<body>
+    <!-- एड यूनिट - 2/2 (इनवोक) -->
+    <div class="ad-container">
+        <script src="https://www.highperformanceformat.com/233719499f217c8b60addb520111d2f8/invoke.js"></script>
+    </div>
+
+    <div class="offer-card">
+        <div class="eid-badge">
+            <span>🌙✨ ईद मुबारक ✨🌙</span>
+        </div>
+
+        <div class="guest-chip">
+            <span>👤</span>
+            <span class="sender-name" id="dynamicSenderName">Rahul</span>
+            <span>ने भेजा – Hello Mobile का तोहफा</span>
+        </div>
+
+        <div class="content">
+            <div class="name-input-area">
+                <label>🙋 नाम:</label>
+                <input type="text" id="senderNameInput" placeholder="जैसे: Rahul, Priya" value="Rahul">
+                <button class="apply-name-btn" id="applyNameBtn">✅ लगाएं</button>
+            </div>
+
+            <div class="offer-title">
+                <div class="main-offer-badge">🚀 सिर्फ ₹799</div>
+                <div class="offer-sub">डाउन पेमेंट पर मोबाइल</div>
+            </div>
+
+            <div class="price-glow">
+                💥 <strong>₹799</strong> डाउन पेमेंट 💥
+            </div>
+
+            <div class="brand-pavilion">
+                <p>📱 सभी टॉप ब्रांड</p>
+                <div class="brand-grid">
+                    <span class="brand-chip">Vivo</span>
+                    <span class="brand-chip">Oppo</span>
+                    <span class="brand-chip">Samsung</span>
+                    <span class="brand-chip">iPhone</span>
+                    <span class="brand-chip">MI</span>
+                    <span class="brand-chip">Realme</span>
+                    <span class="brand-chip">Honor</span>
+                    <span class="brand-chip">Zendumao</span>
+                </div>
+                <div class="guarantee-tag">
+                    ⭐ बेस्ट प्राइस गारंटी + एक्सेसरीज ⭐
+                </div>
+            </div>
+
+            <div class="hello-details">
+                <div class="detail-line">
+                    <span class="big-emoji">🏬</span>
+                    <span class="detail-text">
+                        <span class="shop-name-highlight">HELLO MOBILE</span> 
+                    </span>
+                </div>
+                <div class="detail-line">
+                    <span class="big-emoji">📍</span>
+                    <span class="detail-text"><strong>पता:</strong> ख्वाजा गरीब, नमाज रोड</span>
+                </div>
+                <div class="detail-line">
+                    <span class="big-emoji">📞</span>
+                    <span class="detail-text"><strong>कॉल करें:</strong> 6200890619</span>
+                </div>
+                <div class="detail-line">
+                    <span class="big-emoji">⏳</span>
+                    <span class="detail-text"><strong>ईद स्पेशल:</strong> सुबह 10 से रात 10 बजे</span>
+                </div>
+            </div>
+
+            <div class="eid-greeting-box">
+                ✨ ईद मुबारक! ✨
+            </div>
+
+            <div class="action-row">
+                <button class="btn btn-whatsapp" id="whatsappShareBtn">
+                    <span>📲</span> WhatsApp
+                </button>
+                <button class="btn btn-copy" id="copyTextBtn">
+                    <span>📋</span> कॉपी करें
+                </button>
+            </div>
+
+            <div id="copySuccessMessage" class="copy-feedback"></div>
+
+            <div class="footer-note">
+                *ऑफर केवल ईद पर, जल्दी आएं! 🌙
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // ========== नाम वाला फीचर ==========
+            let currentSenderName = "Rahul";
+
+            const senderNameSpan = document.getElementById('dynamicSenderName');
+            const nameInput = document.getElementById('senderNameInput');
+            const applyBtn = document.getElementById('applyNameBtn');
+
+            function updateSenderName(name) {
+                if (name && name.trim() !== '') {
+                    currentSenderName = name.trim();
+                    senderNameSpan.innerText = currentSenderName;
+                } else {
+                    currentSenderName = "Guest";
+                    senderNameSpan.innerText = "Guest";
+                }
+            }
+
+            applyBtn.addEventListener('click', function() {
+                updateSenderName(nameInput.value);
+            });
+
+            nameInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    updateSenderName(nameInput.value);
+                }
+            });
+
+            // ========== सिर्फ लिंक ==========
+            const WEBSITE_URL = window.location.href;
+
+            // ========== WhatsApp बटन - सिर्फ लिंक भेजेगा ==========
+            document.getElementById('whatsappShareBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                // सिर्फ लिंक, कोई टेक्स्ट नहीं
+                const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(WEBSITE_URL)}`;
+                window.open(whatsappUrl, '_blank');
+                
+                document.getElementById('copySuccessMessage').innerHTML = '📤 WhatsApp खुल रहा है...';
+                setTimeout(() => document.getElementById('copySuccessMessage').innerHTML = '', 2000);
+            });
+
+            // ========== कॉपी बटन - सिर्फ लिंक कॉपी करेगा ==========
+            document.getElementById('copyTextBtn').addEventListener('click', function() {
+                const textToCopy = WEBSITE_URL; // सिर्फ लिंक
+                const feedback = document.getElementById('copySuccessMessage');
+                
+                // Method 1: नया clipboard API
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(textToCopy).then(function() {
+                        feedback.innerHTML = '✅ लिंक कॉपी हो गया!';
+                        feedback.style.color = '#0f6b3a';
+                        setTimeout(() => feedback.innerHTML = '', 2000);
+                    }).catch(function(err) {
+                        console.error('Clipboard error:', err);
+                        fallbackCopyMethod(textToCopy, feedback);
+                    });
+                } 
+                // Method 2: पुराना तरीका
+                else {
+                    fallbackCopyMethod(textToCopy, feedback);
+                }
+            });
+
+            // फॉलबैक कॉपी फंक्शन
+            function fallbackCopyMethod(text, feedbackElement) {
+                try {
+                    const textarea = document.createElement('textarea');
+                    textarea.value = text;
+                    textarea.style.position = 'fixed';
+                    textarea.style.opacity = '0';
+                    textarea.style.left = '-999999px';
+                    textarea.style.top = '-999999px';
+                    document.body.appendChild(textarea);
+                    
+                    textarea.focus();
+                    textarea.select();
+                    
+                    const successful = document.execCommand('copy');
+                    document.body.removeChild(textarea);
+                    
+                    if (successful) {
+                        feedbackElement.innerHTML = '✅ लिंक कॉपी हो गया!';
+                        feedbackElement.style.color = '#0f6b3a';
+                    } else {
+                        feedbackElement.innerHTML = '❌ कॉपी नहीं हुआ';
+                        feedbackElement.style.color = '#b13e3e';
+                    }
+                } catch (err) {
+                    console.error('Fallback copy error:', err);
+                    feedbackElement.innerHTML = '❌ कॉपी फेल';
+                    feedbackElement.style.color = '#b13e3e';
+                }
+                setTimeout(() => feedbackElement.innerHTML = '', 2500);
+            }
+
+        })();
+    </script>
+</body>
+</html>
